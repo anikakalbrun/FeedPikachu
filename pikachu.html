@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>pikachu</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
         h1 {
             margin: 3%;
@@ -13,12 +12,15 @@
             font-size: 50px;
             font-weight: 600;
         }
+        
         h1 span {
             color: darkgoldenrod;
         }
+        
         h1::first-letter {
             color: coral;
         }
+        
         #cookie {
             width: 50px;
             min-height: 250px;
@@ -37,7 +39,6 @@
             background: url(runnng.gif-c200);
             background-size: contain;
             background-repeat: no-repeat;
-            
         }
         
         .bimage {
@@ -45,7 +46,7 @@
              background-size: cover;
             background-repeat: no-repeat;
         }
-    
+        
     </style>
 </head>
 <body>
@@ -53,7 +54,6 @@
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
     
 <h1>Ple<span>as</span>e give pi<span>ka</span>chu a cookie</h1>
 
@@ -66,25 +66,25 @@
 
 <script>
     
- function allowDrop(ev) {
+(function() {
+     function allowDrop(ev) {
     ev.preventDefault();
-}
+     }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-    
-}
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
 
-function drop(ev) {
+    function drop(ev) {    
+        ev.preventDefault();
+        var data = "#" + ev.dataTransfer.getData("text");
+        ev.target.appendChild($(data)[0]);
+
+    $("#pikachu").css({"background":"url(eating.gif)","background-size":"contain", "background-repeat":"no-repeat"});
+    }
     
-    ev.preventDefault();
-    var data = "#" + ev.dataTransfer.getData("text");
-    ev.target.appendChild($(data)[0]);
- 
+})();
     
-$("#pikachu").css({"background":"url(eating.gif)","background-size":"contain", "background-repeat":"no-repeat"});
-}
-    
-    </script>
+</script>
 </body>
 </html>
